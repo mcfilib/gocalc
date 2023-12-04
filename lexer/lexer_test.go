@@ -8,7 +8,7 @@ import (
 )
 
 func TestLex(t *testing.T) {
-	lexer.Lex()
+	lexer.Lex([]rune(""))
 
 	require.Nil(t, nil)
 }
