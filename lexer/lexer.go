@@ -1,6 +1,7 @@
 package lexer
 
 import (
+	"fmt"
 	"unicode"
 )
 
@@ -27,24 +28,32 @@ func Lex(input []rune) []*Token {
 		token := lexParens(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
+			cursor++
+			continue
 		}
 
 		token = lexOp(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
+			cursor++
+			continue
 		}
 
 		token = lexSpace(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
+			cursor++
+			continue
 		}
 
 		token = lexInt(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
+			cursor++
+			continue
 		}
 
-		cursor++
+		panic(fmt.Sprintf("unknown token: %c", input[cursor]))
 	}
 
 	return tokens
