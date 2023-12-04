@@ -5,17 +5,17 @@ import (
 	"unicode"
 )
 
-type tType uint
+type type_ uint
 
 const (
-	Parens tType = iota
+	Parens type_ = iota
 	Op
 	Int
 )
 
 type Token struct {
 	Value []rune
-	Type  tType
+	Type  type_
 }
 
 // Lex takes a slice of runes and performs tokenization
