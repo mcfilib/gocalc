@@ -1,7 +1,13 @@
 package main
 
-import "github.com/mcfilib/gocalc/lexer"
+import (
+	"fmt"
+
+	"github.com/mcfilib/gocalc/lexer"
+)
 
 func main() {
-	lexer.Lex([]rune(""))
+	result := lexer.Lex([]rune("(+ 1 2 3 4)"))
+
+	fmt.Println(result)
 }

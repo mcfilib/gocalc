@@ -8,7 +8,17 @@ import (
 )
 
 func TestLex(t *testing.T) {
-	result := lexer.Lex([]rune("(+ 1 2 3 4)"))
-	require.NotNil(t, result)
-	require.Equal(t, []*lexer.Token{}, result)
+	got := lexer.Lex([]rune("(+ 1 2 3 4)"))
+	require.NotNil(t, got)
+
+	want := []*lexer.Token{
+		{Value: "(", Type: lexer.Parens},
+		{Value: "+", Type: lexer.Op},
+		{Value: "1", Type: lexer.Int},
+		{Value: "2", Type: lexer.Int},
+		{Value: "3", Type: lexer.Int},
+		{Value: "4", Type: lexer.Int},
+		{Value: ")", Type: lexer.Parens}}
+
+	require.Equal(t, want, got)
 }

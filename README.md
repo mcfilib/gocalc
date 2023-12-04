@@ -1,7 +1,10 @@
 # gocalc
 
-Evaluate basic calculations e.g.
+This is a self-study project that demonstrates a lexer, parser and evaluator
+written in Go for a simple calculator language.
 
-```scheme
-(+ 1 2 3 4)
+### Example
+
+```sh
+$ go run cmd/gocalc/main.go
 ```

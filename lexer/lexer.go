@@ -5,7 +5,7 @@ type tType uint
 const (
 	Parens tType = iota
 	Int
-	Ope
+	Op
 )
 
 type Token struct {
@@ -13,6 +13,6 @@ type Token struct {
 	Type  tType
 }
 
-func Lex(input []rune) *Token {
-	return nil
+func Lex(input []rune) []*Token {
+	return []*Token{}
 }
