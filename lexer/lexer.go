@@ -27,29 +27,21 @@ func Lex(input []rune) []*Token {
 		token := lexParens(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
-
-			continue
 		}
 
 		token = lexOp(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
-
-			continue
 		}
 
 		token = lexSpace(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
-
-			continue
 		}
 
 		token = lexInt(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
-
-			continue
 		}
 
 		cursor++
