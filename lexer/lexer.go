@@ -1,7 +1,5 @@
 package lexer
 
-import "fmt"
-
 type tType uint
 
 const (
@@ -15,6 +13,6 @@ type Token struct {
 	Type  tType
 }
 
-func Lex(input []rune) {
-	fmt.Println("hello, world.")
+func Lex(input []rune) *Token {
+	return nil
 }
