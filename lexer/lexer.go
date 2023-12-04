@@ -11,7 +11,6 @@ const (
 	Parens tType = iota
 	Op
 	Int
-	Space
 )
 
 type Token struct {
@@ -25,6 +24,11 @@ func Lex(input []rune) []*Token {
 
 	cursor := 0
 	for cursor < len(input) {
+		if unicode.IsSpace(input[cursor]) {
+			cursor++
+			continue
+		}
+
 		token := lexParens(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
@@ -33,13 +37,6 @@ func Lex(input []rune) []*Token {
 		}
 
 		token = lexOp(cursor, input)
-		if token != nil {
-			tokens = append(tokens, token)
-			cursor++
-			continue
-		}
-
-		token = lexSpace(cursor, input)
 		if token != nil {
 			tokens = append(tokens, token)
 			cursor++
@@ -78,18 +75,6 @@ func lexOp(cursor int, input []rune) *Token {
 		cursor++
 
 		return &Token{Value: []rune{r}, Type: Op}
-	}
-
-	return nil
-}
-
-func lexSpace(cursor int, input []rune) *Token {
-	r := input[cursor]
-
-	if unicode.IsSpace(r) {
-		cursor++
-
-		return &Token{Value: []rune{r}, Type: Space}
 	}
 
 	return nil

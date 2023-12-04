@@ -14,13 +14,9 @@ func TestLex(t *testing.T) {
 	want := []*lexer.Token{
 		{Value: []rune("("), Type: lexer.Parens},
 		{Value: []rune("+"), Type: lexer.Op},
-		{Value: []rune(" "), Type: lexer.Space},
 		{Value: []rune("1"), Type: lexer.Int},
-		{Value: []rune(" "), Type: lexer.Space},
 		{Value: []rune("2"), Type: lexer.Int},
-		{Value: []rune(" "), Type: lexer.Space},
 		{Value: []rune("3"), Type: lexer.Int},
-		{Value: []rune(" "), Type: lexer.Space},
 		{Value: []rune("4"), Type: lexer.Int},
 		{Value: []rune(")"), Type: lexer.Parens}}
 
