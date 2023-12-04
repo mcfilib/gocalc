@@ -12,13 +12,17 @@ func TestLex(t *testing.T) {
 	require.NotNil(t, got)
 
 	want := []*lexer.Token{
-		{Value: "(", Type: lexer.Parens},
-		{Value: "+", Type: lexer.Op},
-		{Value: "1", Type: lexer.Int},
-		{Value: "2", Type: lexer.Int},
-		{Value: "3", Type: lexer.Int},
-		{Value: "4", Type: lexer.Int},
-		{Value: ")", Type: lexer.Parens}}
+		{Value: []rune("("), Type: lexer.Parens},
+		{Value: []rune("+"), Type: lexer.Op},
+		{Value: []rune(" "), Type: lexer.Space},
+		{Value: []rune("1"), Type: lexer.Int},
+		{Value: []rune(" "), Type: lexer.Space},
+		{Value: []rune("2"), Type: lexer.Int},
+		{Value: []rune(" "), Type: lexer.Space},
+		{Value: []rune("3"), Type: lexer.Int},
+		{Value: []rune(" "), Type: lexer.Space},
+		{Value: []rune("4"), Type: lexer.Int},
+		{Value: []rune(")"), Type: lexer.Parens}}
 
 	require.Equal(t, want, got)
 }
