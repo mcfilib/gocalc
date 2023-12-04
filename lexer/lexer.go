@@ -103,7 +103,6 @@ func lexInt(cursor int, input []rune) *Token {
 
 		if unicode.IsDigit(r) {
 			value = append(value, r)
-
 			cursor++
 			continue
 		}
