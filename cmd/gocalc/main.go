@@ -1,9 +1,7 @@
 package main
 
-import (
-	"fmt"
-)
+import "github.com/mcfilib/gocalc/lexer"
 
 func main() {
-	fmt.Println("hello, world.")
+	lexer.Lex()
 }
