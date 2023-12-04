@@ -53,7 +53,7 @@ func Lex(input []rune) []*Token {
 			continue
 		}
 
-		panic(fmt.Sprintf("unknown token: %c", input[cursor]))
+		panic(fmt.Sprintf("unknown token: %c (pos %d)", input[cursor], cursor))
 	}
 
 	return tokens
