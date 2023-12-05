@@ -7,6 +7,12 @@ import (
 )
 
 // Eval reduces the AST to a value
+func Eval(ast []*parser.Node) int {
+	rootNode := ast[0]
+
+	return eval(rootNode)
+}
+
 func eval(node *parser.Node) int {
 	var result int
 
