@@ -1,12 +1,16 @@
 package main
 
 import (
-	"github.com/davecgh/go-spew/spew"
+	"fmt"
+	"os"
+
+	"github.com/mcfilib/gocalc/evaluator"
 	"github.com/mcfilib/gocalc/lexer"
+	"github.com/mcfilib/gocalc/parser"
 )
 
 func main() {
-	result := lexer.Lex([]rune("(+ 1 2 3 4)"))
+	_, ast := parser.Parse(0, lexer.Lex([]rune(os.Args[1])))
 
-	spew.Dump(result)
+	fmt.Println(evaluator.Eval(ast))
 }

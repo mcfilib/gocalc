@@ -6,5 +6,5 @@ written in Go for a simple calculator language.
 ### Example
 
 ```sh
-go run cmd/gocalc/main.go
+go run cmd/gocalc/main.go '(+ 1 2 3 4 5 6)'
 ```
