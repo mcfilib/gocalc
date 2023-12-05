@@ -12,37 +12,18 @@ func TestParse(t *testing.T) {
 	input := lexer.Lex([]rune("(+ 1 2 3 4)"))
 	require.NotNil(t, input)
 
-	got := parser.Parse(0, input)
-	require.NotNil(t, got)
-
-	want := &parser.AST{
-		First: &lexer.Token{
-			Type:  lexer.Op,
-			Value: []rune("+"),
-		},
-		Rest: []*parser.AST{
-			{
-				First: &lexer.Token{
-					Type:  lexer.Int,
-					Value: []rune("1")},
-			},
-			{
-				First: &lexer.Token{
-					Type:  lexer.Int,
-					Value: []rune("2")},
-			},
-			{
-				First: &lexer.Token{
-					Type:  lexer.Int,
-					Value: []rune("3")},
-			},
-			{
-				First: &lexer.Token{
-					Type:  lexer.Int,
-					Value: []rune("4")},
-			},
+	want := []*parser.Node{
+		{
+			Atom: nil,
+			List: []*parser.Node{
+				{Atom: &lexer.Token{Value: []rune("+"), Type: lexer.Op}},
+				{Atom: &lexer.Token{Value: []rune("1"), Type: lexer.Int}},
+				{Atom: &lexer.Token{Value: []rune("2"), Type: lexer.Int}},
+				{Atom: &lexer.Token{Value: []rune("3"), Type: lexer.Int}},
+				{Atom: &lexer.Token{Value: []rune("4"), Type: lexer.Int}}},
 		},
 	}
 
+	_, got := parser.Parse(0, input)
 	require.Equal(t, want, got)
 }
